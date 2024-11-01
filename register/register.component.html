@@ -1,0 +1,143 @@
+  <div class="container" style="margin-top: 5%;">
+      <h6 style="color:rgb(9, 117, 20); text-align:left; font-size: 70px; margin-left: 9%;">Registration Form</h6>
+      <br><br><br>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="form-group">
+
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input id="firstName" type="text" formControlName="firstName"  [ngClass]="{ 'error': registerForm.get('firstName')?.invalid &&  (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched) }" required />
+              <div *ngIf="registerForm.get('firstName')?.invalid && (registerForm.get('firstName')?.dirty || registerForm.get('firstName')?.touched)">
+                <h6 style="color: red;">* First name is required.</h6>
+              </div>
+            </div>
+              
+
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" type="text"  formControlName="lastName"  [ngClass]="{ 'error': registerForm.get('lastName')?.invalid &&  (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched) }"  required />
+              <div *ngIf="registerForm.get('lastName')?.invalid && (registerForm.get('lastName')?.dirty || registerForm.get('lastName')?.touched)">
+              <h6 style="color: red;">* Last name is required.</h6>
+              </div>
+            </div>
+          </div>
+
+
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" [ngClass]="{'error': registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)}" required />
+
+          <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+
+            <h6 style="color: red;">* Email is required</h6>
+            <div *ngIf="registerForm.get('email')?.hasError('email')">
+
+              <h6 style="color: red;">* Invalid email</h6>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" formControlName="password" [ngClass]="{'error': registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)}" required />
+
+          <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+
+            <div *ngIf="registerForm.get('password')?.hasError('required')">
+
+              <h6 style="color: red;">* Password is required</h6>
+            </div>
+            <div *ngIf="registerForm.get('password')?.hasError('pattern')">
+
+              <h6 style="color: red;">
+                Password must be at least 8 characters with at least one lowercase letter, one uppercase letter, one number, and one special character
+              </h6>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input id="phoneNumber" type="text" maxlength="10" formControlName="phoneNumber" [ngClass]="{'error': registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)}" required />
+
+          <div *ngIf="registerForm.get('phoneNumber')?.invalid && (registerForm.get('phoneNumber')?.dirty || registerForm.get('phoneNumber')?.touched)">
+
+            <div *ngIf="registerForm.get('phoneNumber')?.hasError('required')">
+
+              <h6 style="color: red;">* Phone number is required</h6>
+            </div>
+            <div *ngIf="registerForm.get('phoneNumber')?.hasError('pattern')">
+
+              <h6 style="color: red;">* Please enter a 10-digit phone number</h6>
+            </div>
+          </div>
+          <br>
+          <br>
+        
+        
+        <div class="form-group">
+              <div class="form-group">
+              <label for="city">City</label>
+              <select id="city" formControlName="city" [ngClass]="{'error': registerForm.get('city')?.invalid && registerForm.get('city')?.touched}" required>
+
+                <option>Hyderabad</option>
+                <option>Vizag</option>
+                <option>Haryana</option>
+                <option>Pune</option>
+                <option>Chennai</option>
+                <option>Bengaluru</option>
+                <option>Lucknow</option>
+                <option>Jaipur</option>
+                <option>Mumbai</option>
+                <option>Kolkata</option>
+              </select>
+
+              <div *ngIf="registerForm.get('city')?.invalid && registerForm.get('city')?.touched">
+
+                <h6 style="color: red;">* City is required</h6>
+              </div>
+  </div>
+              
+
+
+
+            <div class="form-group">
+              <label for="state">State</label>
+
+              <select id="state"  formControlName="state" [ngClass]="{'error':registerForm.get('state')?.invalid && registerForm.get('state')?.touched}" required>
+                <option>Telangana</option>
+                <option>Andhra Pradesh</option>
+                <option>Punjab</option>
+                <option>TamilNadu</option>
+                <option>Chandigarh</option>
+                <option>Karnataka</option>
+                <option>West Bengal</option>
+                <option>Uttar Pradesh</option>
+                <option>Maharastra</option>
+                <option>Rajastan</option>
+                <option>Jammu Kashmir</option>
+              </select>
+
+              <div *ngIf="registerForm.get('state')?.invalid && registerForm.get('state')?.touched">
+                <h6 style="color: red;">* State is required</h6>
+
+              </div>
+
+            
+          
+            </div>
+    </div>
+    
+
+  <br>
+  <br>
+        <div>
+          <button type="submit"class="btn btn-primary" (click)="register()" [disabled]="registerForm.invalid" style="align-content: center;">Submit</button>
+    </div>
+
+      
+    </div>
+    
